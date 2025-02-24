@@ -47,7 +47,7 @@ const Authentication = () => {
         <GoogleLogin
           onSuccess={(credentialResponse) => {
             const decoded = jwtDecode(credentialResponse.credential);
-            console.log(decoded);
+            // console.log(decoded);
 
             localStorage.setItem("user", JSON.stringify(decoded));
 
