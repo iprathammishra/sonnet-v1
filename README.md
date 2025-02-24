@@ -1,5 +1,8 @@
-Version 1.
-<hr>
-In today's fast-paced academic environment, keeping up with lecture content while taking comprehensive notes is a challenging task for students. <strong>"SONNET-Music to your Notes"</strong> is designed to address this challenge by leveraging the power of <strong>artificial intelligence</strong> and machine learning. The core of our application is based on advanced natural language processing (NLP) and machine learning (ML) techniques. These technologies work together to provide a seamless and effective solution for students who need an efficient way to capture and review lecture content. Key concepts involved in the application include <strong>Automatic Speech Recognition (ASR)</strong>, which converts spoken language into text, and Text Summarization, which generates concise summaries from the transcribed text. The application is built using React Native. Additionally, authentication via Google ensures secure and efficient user login, while the app's database management system securely stores each student's lecture data for easy access and retrieval.
-<br><br>
-The need for an efficient note-taking solution is evident in the academic world. Students often struggle to balance listening to lectures and taking detailed notes simultaneously, leading to gaps in understanding and retention. Traditional note-taking methods can be time-consuming and may result in students missing key information during lectures. Our application directly addresses the issue by provinding an automated solution that captures and organizes lecture content, ensuring that no critical information is missed. By integrating modern technology with everyday academic tasks, SONNET transforms the note-taking experience, making it easier for students to focus on learning and comprehension rather than simply recording information.
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
