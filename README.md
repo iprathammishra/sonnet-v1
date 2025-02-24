@@ -1,1 +1,1 @@
-Backend code for Sonnet; includes mongodb integration with APIs.
+Backend code for Sonnet; includes mongodb integration and Inference APIs from Huggingface.
