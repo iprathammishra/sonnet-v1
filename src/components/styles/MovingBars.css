@@ -20,14 +20,14 @@ html, body {
 
 .bar {
   position: absolute;
-  height: 10px;
+  height: 13px;
   background-color: black;
 }
 
 
 .button-container {
   position: absolute;
-  top: 50%;
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
@@ -36,5 +36,3 @@ html, body {
   align-items: center;
   width: 100%;
 }
-
-
