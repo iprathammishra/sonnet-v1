@@ -1,5 +1,6 @@
 import { googleLogout } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
+import WhisperTranscription from "../components/WhisperTranscription";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ const Home = () => {
     <>
       <div>Entry page</div>
       <button onClick={handleLogout}>Logout</button>
+      <WhisperTranscription />
     </>
   );
 };
