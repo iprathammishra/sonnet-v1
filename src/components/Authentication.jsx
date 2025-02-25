@@ -20,9 +20,9 @@ const Authentication = () => {
     const interval = setInterval(() => {
       setBars((prevBars) => [
         ...prevBars,
-        ...Array.from({ length: Math.floor(Math.random() * 10) + 2 }).map(() => ({
+        ...Array.from({ length: Math.floor(Math.random() * 4) + 2 }).map(() => ({
           id: Math.random(),
-          width: Math.random() * 200 + 100,
+          width: Math.random() * 50 + 50,
           top: Math.random() * 80 + "%",
           speed: Math.random() * 1 + 2,
         })),
@@ -47,8 +47,6 @@ const Authentication = () => {
         <GoogleLogin
           onSuccess={(credentialResponse) => {
             const decoded = jwtDecode(credentialResponse.credential);
-            // console.log(decoded);
-
             localStorage.setItem("user", JSON.stringify(decoded));
 
             navigate("/home"); 
