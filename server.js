@@ -13,9 +13,12 @@ db.once("open", () => console.log("DB connected."));
 app.use(cors());
 app.use(express.json());
 
-const userRouter = require("./routes/users");
-app.use("/users", userRouter);
+const authRouter = require("./routes/auth");
+app.use("/api/auth", authRouter);
 
-app.listen(3000, () => {
+const userRouter = require("./routes/users");
+app.use("/api/users", userRouter);
+
+app.listen(process.env.PORT, () => {
   console.log("Server started.");
 })
