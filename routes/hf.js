@@ -6,6 +6,29 @@ const multer = require("multer");
 const HF_API_KEY = process.env.HF_ACCESS_TOKEN;
 const axios = require("axios");
 
+
+const upload = multer();
+router.post("/transcribe", upload.single("audio"), async (req, res) => {
+    if (!req.file) return res.status(400).json({ error: "No file uploaded" });
+
+    try {
+        const response = await axios.post(
+            "https://api-inference.huggingface.co/models/openai/whisper-large-v3-turbo",
+            req.file.buffer,
+            {
+                headers: {
+                    "Authorization": `Bearer ${HF_API_KEY}`,
+                    "Content-Type": "audio/mp3"
+                }
+            }
+        );
+        res.json(response.data);
+    } catch (err) {
+        console.error("Transcription error:", err.response?.data || err.message);
+        res.status(500).json({ error: err.message });
+    }
+});
+
 const client = new OpenAI({
   baseURL: "https://huggingface.co/api/inference-proxy/together",
   apiKey: HF_API_KEY, 
@@ -57,27 +80,6 @@ router.post("/:userId/notes/:noteId/", async (req, res) => {
   }
 });
 
-const upload = multer();
-router.post("/transcribe", upload.single("audio"), async (req, res) => {
-    if (!req.file) return res.status(400).json({ error: "No file uploaded" });
-
-    try {
-        const response = await axios.post(
-            "https://api-inference.huggingface.co/models/openai/whisper-large-v3-turbo",
-            req.file.buffer,
-            {
-                headers: {
-                    "Authorization": `Bearer ${HF_API_KEY}`,
-                    "Content-Type": "audio/mp3"
-                }
-            }
-        );
-        res.json(response.data);
-    } catch (err) {
-        console.error("Transcription error:", err.response?.data || err.message);
-        res.status(500).json({ error: err.message });
-    }
-});
 
 module.exports = router;
 
