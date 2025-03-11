@@ -60,6 +60,25 @@ router.post("/:userId", async (req, res) => {
     }
 });
 
+// Edit a particular route
+router.put("/:userId/notes/:id/title", async (req, res) => {
+    try {
+        const user = await User.findById(req.params.userId);
+        if (!user) return res.status(404).json({ message: "User not found" });
+
+        const note = user.notes.id(req.params.id);
+        if (!note) return res.status(404).json({ message: "Note not found" });
+
+        note.title = req.body.title || note.title;
+        await user.save();
+
+        res.json({ message: "Title updated successfully", updatedNote: note });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+
 // Delete a particular note
 router.delete("/:userId/notes/:id", async (req, res) => {
     try {
