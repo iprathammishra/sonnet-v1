@@ -3,10 +3,6 @@
   margin: 50px;
 }
 
-.icon-tray {
-
-}
-
 .icon {
   width: 15px;
   cursor: pointer;
@@ -39,10 +35,12 @@
 
 .description {
   font-size: 1.2rem;
-  flex: 1; 
+  flex: 1;
   overflow-y: auto;
-  padding-right: 8px; 
+  padding-right: 8px;
+  max-height: 60vh; 
 }
+
 
 .description::-webkit-scrollbar {
   display: none;

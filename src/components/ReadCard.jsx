@@ -168,7 +168,14 @@ const ReadCard = ({ title, date, description, noteId, userId }) => {
 
       <hr className="hr-line" />
 
-      <div className="description">{description}</div>
+      <div className="description">
+      {description.split("\n").map((line, index) => (
+        <span key={index}>
+          {line}
+          <br />
+        </span>
+      ))}
+    </div>
     </div>
   );
 };
