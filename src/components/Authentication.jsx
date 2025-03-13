@@ -12,7 +12,8 @@ const Authentication = () => {
   useEffect(() => {
     const user = localStorage.getItem("user");
     if (user) {
-      navigate("/home");
+      const parsedUser = JSON.parse(user);
+      navigate(`/${parsedUser._id}`);
     }
   }, [navigate]);
 
@@ -31,6 +32,26 @@ const Authentication = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const handleGoogleLogin = async (credentialResponse) => {
+    const decoded = jwtDecode(credentialResponse.credential);
+
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: decoded.name, email: decoded.email }),
+      });
+
+      const data = await response.json();
+      const userWithId = { ...decoded, _id: data.userId };
+      localStorage.setItem("user", JSON.stringify(userWithId));
+
+      navigate(`/${data.userId}`);
+    } catch (error) {
+      console.error("Error saving user to database:", error);
+    }
+  };
+
   return (
     <div className="container">
       {bars.map((bar) => (
@@ -43,14 +64,10 @@ const Authentication = () => {
           style={{ width: bar.width, top: bar.top }}
         />
       ))}
+
       <div className="button-container">
         <GoogleLogin
-          onSuccess={(credentialResponse) => {
-            const decoded = jwtDecode(credentialResponse.credential);
-            localStorage.setItem("user", JSON.stringify(decoded));
-
-            navigate("/home"); 
-          }}
+          onSuccess={handleGoogleLogin}
           onError={() => console.log("Login failed.")}
           auto_select={true}
         />

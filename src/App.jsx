@@ -8,7 +8,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Authentication />} />
       <Route
-        path="/home"
+        path="/:userId"
         element={
           <ProtectedRoute>
             <Home />
