@@ -28,6 +28,7 @@ const Home = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedNote, setSelectedNote] = useState(null);
   const user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
@@ -37,8 +38,8 @@ const Home = () => {
         if (!response.ok) throw new Error("Failed to fetch notes");
 
         const data = await response.json();
-        console.log(data);
         setNotes(data.length ? data : []);
+        if (data.length) setSelectedNote(data[0]);
       } catch (error) {
         console.error("Error fetching notes:", error);
         setNotes([]);
@@ -74,13 +75,13 @@ const Home = () => {
 
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
-  
+
     const options = { 
       month: "short", 
       day: "numeric", 
       year: "numeric" 
     };
-  
+
     const formattedDate = date.toLocaleDateString("en-US", options);
 
     const day = date.getDate();
@@ -92,7 +93,7 @@ const Home = () => {
         : day % 10 === 3 && day !== 13
         ? "rd"
         : "th";
-  
+
     return formattedDate.replace(/(\d{1,2})/, `$1${suffix}`);
   };
 
@@ -112,6 +113,10 @@ const Home = () => {
                   title={note.title}
                   date={formatDate(note.date)}
                   description={note.summary}
+                  onClick={() => {
+                    console.log("Clicked");
+                    setSelectedNote(note)
+                  }}
                 />
               ))
             ) : (
@@ -121,7 +126,15 @@ const Home = () => {
         </div>
         <div className="right-section">
           <button className="logout-button" onClick={handleLogout}>Logout</button>
-          <ReadCard title="Artificial Intelligence" date="Aug 23rd, 2024" description="Long text here...." />
+          {selectedNote && (
+            <ReadCard 
+              title={selectedNote.title} 
+              date={formatDate(selectedNote.date)} 
+              description={selectedNote.summary} 
+              noteId={selectedNote._id}
+              userId={user._id}
+            />
+          )}
 
           <input
             type="file"
