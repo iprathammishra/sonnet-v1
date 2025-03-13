@@ -51,7 +51,6 @@ router.post("/process", upload.single("audio"), async (req, res) => {
           max_tokens: 5000, 
         });
 
-        console.log(chatCompletion.choices[0].message.content);
         const output = chatCompletion.choices[0].message.content;
         res.json({summary: output});
         
