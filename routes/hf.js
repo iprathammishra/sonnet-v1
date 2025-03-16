@@ -34,7 +34,7 @@ router.post("/process", upload.single("audio"), async (req, res) => {
                   ---------
 
                   The text may have minor distortions, but I want you to generate a concise yet detailed 2000-word summary of everything we discussed in the lecture. Focus on the lecture's key points, explanations, and discussions and explain some major topics that were discussed in the lecture in a short paragraph. 
-                  
+
                   Avoid generic introductions like "Here's the summary". 
                   Instead, start with a natural flow — for example, "Today we explored..." or "In today's class...". 
                   Maintain a clear, organized structure that reflects how the lecture unfolded.`;
@@ -48,7 +48,7 @@ router.post("/process", upload.single("audio"), async (req, res) => {
               content: prompt,
             }
           ],
-          max_tokens: 5000, 
+          max_tokens: 1500, 
         });
 
         const output = chatCompletion.choices[0].message.content;
