@@ -136,3 +136,30 @@
 .save-btn:hover, .delete-btn:hover, .cancel-btn:hover {
   opacity: 0.8;
 }
+
+.markdown-content {
+  line-height: 1.6;
+  color: #333;
+  background-color:rgb(255, 255, 255);
+  overflow-wrap: break-word;
+}
+
+.markdown-content h1, 
+.markdown-content h2, 
+.markdown-content h3 {
+  color:rgb(0, 0, 0);
+}
+
+.markdown-content strong {
+  font-weight: bold;
+}
+
+.markdown-content a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.markdown-content pre {
+  background-color:rgb(255, 255, 255);
+  overflow-x: auto;
+}

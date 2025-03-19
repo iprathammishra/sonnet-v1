@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
 import "../components/styles/ReadCard.css";
 
 const EditModal = ({ initialTitle, noteId, userId, onCancel }) => {
@@ -167,15 +168,10 @@ const ReadCard = ({ title, date, description, noteId, userId }) => {
       </div>
 
       <hr className="hr-line" />
-
-      <div className="description">
-      {description.split("\n").map((line, index) => (
-        <span key={index}>
-          {line}
-          <br />
-        </span>
-      ))}
-    </div>
+      
+      <div className="description markdown-content">
+        <ReactMarkdown>{description}</ReactMarkdown>
+      </div>
     </div>
   );
 };

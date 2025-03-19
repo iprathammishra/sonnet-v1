@@ -81,10 +81,10 @@ const Home = () => {
     setUploadLoading(true); 
 
     const formData = new FormData();
-    formData.append("audio", file);
+    formData.append("file", file); 
 
     try {
-      const response = await fetch("http://localhost:5000/api/hf/process/", {
+      const response = await fetch("http://localhost:5000/api/gem/", {
         method: "POST",
         body: formData,
       });
