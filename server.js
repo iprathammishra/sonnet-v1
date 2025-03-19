@@ -16,8 +16,8 @@ app.use(express.json());
 const authRouter = require("./routes/auth");
 app.use("/api/auth", authRouter);
 
-const huggingfaceRouter = require("./routes/hf");
-app.use("/api/hf", huggingfaceRouter);
+const geminiRouter = require("./routes/gemini");
+app.use("/api/gem", geminiRouter);
 
 const userRouter = require("./routes/users");
 app.use("/api/users", userRouter);
