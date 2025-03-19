@@ -1,2 +1,2 @@
 ## Description
-Trying out `/hf` routes with `gemini-2.0-flash`.
+Trying out `/api/gem/` routes with `gemini-2.0-flash`.
