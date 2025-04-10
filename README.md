@@ -1,4 +1,7 @@
-Version 1.
+# Automatic Speech Recognition based Notes Taking System.
+### Introducing Sonnet
+<br>
+<img src="front\public\logo-main-png.jpeg" width=200 height=200>
 <hr>
 In today's fast-paced academic environment, keeping up with lecture content while taking comprehensive notes is a challenging task for students. <strong>"SONNET-Music to your Notes"</strong> is designed to address this challenge by leveraging the power of <strong>artificial intelligence</strong> and machine learning. The core of our application is based on advanced natural language processing (NLP) and machine learning (ML) techniques. These technologies work together to provide a seamless and effective solution for students who need an efficient way to capture and review lecture content. Key concepts involved in the application include <strong>Automatic Speech Recognition (ASR)</strong>, which converts spoken language into text, and Text Summarization, which generates concise summaries from the transcribed text. The application is built using React Native. Additionally, authentication via Google ensures secure and efficient user login, while the app's database management system securely stores each student's lecture data for easy access and retrieval.
 <br><br>
