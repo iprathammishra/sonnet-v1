@@ -163,7 +163,6 @@ const Home = () => {
                   date={formatDate(note.date)}
                   description={note.summary}
                   onClick={() => {
-                    console.log("Clicked");
                     setSelectedNote(note);
                   }}
                 />
