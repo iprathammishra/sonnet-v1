@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
+const port = process.env.PORT || 5000;
 
 mongoose.connect(process.env.DATABASE_URL);
 const db = mongoose.connection;
@@ -22,7 +23,11 @@ app.use("/api/gem", geminiRouter);
 const userRouter = require("./routes/users");
 app.use("/api/users", userRouter);
 
-app.listen(process.env.PORT, () => {
+app.get("/", (req, res) => {
+  res.send("Application alive.")
+});
+
+app.listen(port, () => {
   console.log("Server started."); 
 })
 

@@ -4,7 +4,8 @@
   "description": "backend for sonnet",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server",
+    "start-dev": "nodemon server.js"
   },
   "repository": "https://github.com/iprathammishra/sonnet-v1.git",
   "author": "Pratham <mishrapratham.codeit@gmail.com>",

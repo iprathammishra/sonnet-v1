@@ -13,7 +13,7 @@ const EditModal = ({ initialTitle, noteId, userId, onCancel }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/users/${userId}/notes/${noteId}/title`,
+        `https://sonnet-backend-dep.onrender.com/api/users/${userId}/notes/${noteId}/title`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -70,7 +70,7 @@ const DeleteModal = ({ noteId, userId, onCancel }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/users/${userId}/notes/${noteId}`,
+        `https://sonnet-backend-dep.onrender.com/api/users/${userId}/notes/${noteId}`,
         {
           method: "DELETE",
         }

@@ -41,7 +41,7 @@ const Home = () => {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/users/${user._id}/notes`);
+        const response = await fetch(`https://sonnet-backend-dep.onrender.com/api/users/${user._id}/notes`);
         if (!response.ok) throw new Error("Failed to fetch notes");
 
         const data = await response.json();
@@ -84,7 +84,7 @@ const Home = () => {
     formData.append("file", file); 
 
     try {
-      const response = await fetch("http://localhost:5000/api/gem/", {
+      const response = await fetch("https://sonnet-backend-dep.onrender.com/api/gem/", {
         method: "POST",
         body: formData,
       });
@@ -96,7 +96,7 @@ const Home = () => {
       const data = await response.json();
       const userId = JSON.parse(localStorage.getItem("user"))._id;
 
-      const addNoteResponse = await fetch(`http://localhost:5000/api/users/${userId}`, {
+      const addNoteResponse = await fetch(`https://sonnet-backend-dep.onrender.com/api/users/${userId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
