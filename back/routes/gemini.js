@@ -39,7 +39,7 @@ router.post('/', upload.single('file'), async (req, res) => {
 
               ---------
 
-              The text may have minor distortions, but I want you to generate a concise yet detailed 2000-word summary of everything we discussed in the lecture. Focus on the lecture's key points, explanations, and discussions and explain some major topics that were discussed in the lecture in a short paragraph. 
+              The text may have minor distortions, but I want you to generate a concise yet detailed 1500-word summary of everything we discussed in the lecture. Focus on the lecture's key points, explanations, and discussions and explain some major topics that were discussed in the lecture in a short paragraph. 
 
               Avoid generic introductions like "Here's the summary". 
               Instead, start with a natural flow — for example, "Today we explored..." or "In today's class...". 

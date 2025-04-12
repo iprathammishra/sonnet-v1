@@ -23,5 +23,7 @@ const userRouter = require("./routes/users");
 app.use("/api/users", userRouter);
 
 app.listen(process.env.PORT, () => {
-  console.log("Server started.");
+  console.log("Server started."); 
 })
+
+
