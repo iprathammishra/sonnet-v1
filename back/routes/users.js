@@ -60,6 +60,37 @@ router.post("/:userId", async (req, res) => {
     }
 });
 
+// Add multiple notes to a user
+router.post("/:userId/batch", async (req, res) => {
+    try {
+        const notes = req.body; // expecting an array of { title, summary }
+
+        if (!Array.isArray(notes) || notes.length === 0) {
+            return res.status(400).json({ message: "Expected an array of notes" });
+        }
+
+        // Validate notes
+        for (let note of notes) {
+            if (!note.title || !note.summary) {
+                return res.status(400).json({ message: "Each note must have a title and summary" });
+            }
+        }
+
+        const user = await User.findById(req.params.userId);
+        if (!user) return res.status(404).json({ message: "User not found" });
+
+        // Add all notes
+        user.notes.push(...notes);
+        await user.save();
+
+        res.status(201).json({ message: "Notes added successfully", totalNotes: user.notes.length });
+    } catch (err) {
+        console.error("Error adding multiple notes:", err.message);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+
 // Edit a particular route
 router.put("/:userId/notes/:id/title", async (req, res) => {
     try {
