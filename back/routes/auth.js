@@ -19,4 +19,28 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.post("/batch", async (req, res) => {
+  try {
+    const users = req.body; // expecting an array of users
+    const createdUsers = [];
+
+    for (const { name, email } of users) {
+      let user = await User.findOne({ email });
+
+      if (!user) {
+        user = new User({ name, email, notes: [] });
+        await user.save();
+      }
+
+      createdUsers.push({ userId: user._id, email });
+    }
+
+    res.json({ users: createdUsers });
+  } catch (error) {
+    console.error("Error in batch user creation", error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+
 module.exports = router;
