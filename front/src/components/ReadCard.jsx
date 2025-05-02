@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import "../components/styles/ReadCard.css";
 
@@ -6,6 +7,7 @@ const EditModal = ({ initialTitle, noteId, userId, onCancel }) => {
   const [newTitle, setNewTitle] = useState(initialTitle);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const navigatePut = useNavigate();
 
   const handleSave = async () => {
     setIsLoading(true);
@@ -22,7 +24,8 @@ const EditModal = ({ initialTitle, noteId, userId, onCancel }) => {
       );
 
       if (response.ok) {
-        window.location.reload(); 
+        // window.location.reload(); 
+        navigatePut("/");
       } else {
         setError("Failed to update the title. Please try again.");
       }
@@ -63,6 +66,7 @@ const EditModal = ({ initialTitle, noteId, userId, onCancel }) => {
 const DeleteModal = ({ noteId, userId, onCancel }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const navigateDelete = useNavigate();
 
   const handleDelete = async () => {
     setIsLoading(true);
@@ -77,7 +81,8 @@ const DeleteModal = ({ noteId, userId, onCancel }) => {
       );
 
       if (response.ok) {
-        window.location.reload(); 
+        // window.location.reload(); 
+        navigateDelete("/");
       } else {
         setError("Failed to delete the note. Please try again.");
       }

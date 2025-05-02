@@ -110,7 +110,7 @@ const Home = () => {
       if (!addNoteResponse.ok) {
         throw new Error("Failed to save note in the database.");
       }
-      window.location.reload();
+      navigate("/");
     } catch (error) {
       console.error("Error during transcription or note creation:", error);
       alert("Error processing the audio or saving the note. Please try again.");
